@@ -1,0 +1,9 @@
+<openejb>
+    <Resource id="Default JDBC Database" type="DataSource">
+        JdbcDriver  com.mysql.jdbc.Driver
+        JdbcUrl jdbc:mysql://localhost:3306/clinica
+        UserName root
+        Password
+        JtaManaged true
+    </Resource>
+</openejb>
