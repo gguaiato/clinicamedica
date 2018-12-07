@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePacienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_codigoPaciente}" for="codigoPaciente" />
+                    <h:inputText id="codigoPaciente" value="#{pacienteController.selected.codigoPaciente}" title="#{bundle.CreatePacienteTitle_codigoPaciente}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_codigoPaciente}"/>
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_cpf}" for="cpf" />
+                    <h:inputText id="cpf" value="#{pacienteController.selected.cpf}" title="#{bundle.CreatePacienteTitle_cpf}" />
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{pacienteController.selected.nome}" title="#{bundle.CreatePacienteTitle_nome}" />
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_telefone}" for="telefone" />
+                    <h:inputText id="telefone" value="#{pacienteController.selected.telefone}" title="#{bundle.CreatePacienteTitle_telefone}" />
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_sexo}" for="sexo" />
+                    <h:inputText id="sexo" value="#{pacienteController.selected.sexo}" title="#{bundle.CreatePacienteTitle_sexo}" />
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_endereco}" for="endereco" />
+                    <h:inputText id="endereco" value="#{pacienteController.selected.endereco}" title="#{bundle.CreatePacienteTitle_endereco}" />
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_idade}" for="idade" />
+                    <h:inputText id="idade" value="#{pacienteController.selected.idade}" title="#{bundle.CreatePacienteTitle_idade}" />
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_consultaDiagnostico}" for="consultaDiagnostico" />
+                    <h:selectOneMenu id="consultaDiagnostico" value="#{pacienteController.selected.consultaDiagnostico}" title="#{bundle.CreatePacienteTitle_consultaDiagnostico}" >
+                        <f:selectItems value="#{consultaDiagnosticoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pacienteController.create}" value="#{bundle.CreatePacienteSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pacienteController.prepareList}" value="#{bundle.CreatePacienteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePacienteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

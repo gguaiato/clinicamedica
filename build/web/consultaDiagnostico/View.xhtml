@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewConsultaDiagnosticoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewConsultaDiagnosticoLabel_consultaDiagnosticoPK_idConsulta}"/>
+                    <h:outputText value="#{consultaDiagnosticoController.selected.consultaDiagnosticoPK.idConsulta}" title="#{bundle.ViewConsultaDiagnosticoTitle_consultaDiagnosticoPK_idConsulta}"/>
+                    <h:outputText value="#{bundle.ViewConsultaDiagnosticoLabel_data}"/>
+                    <h:outputText value="#{consultaDiagnosticoController.selected.data}" title="#{bundle.ViewConsultaDiagnosticoTitle_data}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewConsultaDiagnosticoLabel_pagou}"/>
+                    <h:outputText value="#{consultaDiagnosticoController.selected.pagou}" title="#{bundle.ViewConsultaDiagnosticoTitle_pagou}"/>
+                    <h:outputText value="#{bundle.ViewConsultaDiagnosticoLabel_valorPago}"/>
+                    <h:outputText value="#{consultaDiagnosticoController.selected.valorPago}" title="#{bundle.ViewConsultaDiagnosticoTitle_valorPago}"/>
+                    <h:outputText value="#{bundle.ViewConsultaDiagnosticoLabel_formaPagamento}"/>
+                    <h:outputText value="#{consultaDiagnosticoController.selected.formaPagamento}" title="#{bundle.ViewConsultaDiagnosticoTitle_formaPagamento}"/>
+                    <h:outputText value="#{bundle.ViewConsultaDiagnosticoLabel_horaInicio}"/>
+                    <h:outputText value="#{consultaDiagnosticoController.selected.horaInicio}" title="#{bundle.ViewConsultaDiagnosticoTitle_horaInicio}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewConsultaDiagnosticoLabel_minutosInic}"/>
+                    <h:outputText value="#{consultaDiagnosticoController.selected.minutosInic}" title="#{bundle.ViewConsultaDiagnosticoTitle_minutosInic}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewConsultaDiagnosticoLabel_horaFim}"/>
+                    <h:outputText value="#{consultaDiagnosticoController.selected.horaFim}" title="#{bundle.ViewConsultaDiagnosticoTitle_horaFim}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewConsultaDiagnosticoLabel_tratamentoRecomendado}"/>
+                    <h:outputText value="#{consultaDiagnosticoController.selected.tratamentoRecomendado}" title="#{bundle.ViewConsultaDiagnosticoTitle_tratamentoRecomendado}"/>
+                    <h:outputText value="#{bundle.ViewConsultaDiagnosticoLabel_remediosReceitados}"/>
+                    <h:outputText value="#{consultaDiagnosticoController.selected.remediosReceitados}" title="#{bundle.ViewConsultaDiagnosticoTitle_remediosReceitados}"/>
+                    <h:outputText value="#{bundle.ViewConsultaDiagnosticoLabel_observacoes}"/>
+                    <h:outputText value="#{consultaDiagnosticoController.selected.observacoes}" title="#{bundle.ViewConsultaDiagnosticoTitle_observacoes}"/>
+                    <h:outputText value="#{bundle.ViewConsultaDiagnosticoLabel_doença}"/>
+                    <h:outputText value="#{consultaDiagnosticoController.selected.doença}" title="#{bundle.ViewConsultaDiagnosticoTitle_doença}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{consultaDiagnosticoController.destroyAndView}" value="#{bundle.ViewConsultaDiagnosticoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewConsultaDiagnosticoEditLink}"/>
+                <br />
+                <h:commandLink action="#{consultaDiagnosticoController.prepareCreate}" value="#{bundle.ViewConsultaDiagnosticoCreateLink}" />
+                <br />
+                <h:commandLink action="#{consultaDiagnosticoController.prepareList}" value="#{bundle.ViewConsultaDiagnosticoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewConsultaDiagnosticoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

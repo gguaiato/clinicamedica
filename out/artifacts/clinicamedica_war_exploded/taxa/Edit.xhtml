@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTaxaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTaxaLabel_taxa}" for="taxa" />
+                    <h:inputText id="taxa" value="#{taxaController.selected.taxa}" title="#{bundle.EditTaxaTitle_taxa}" required="true" requiredMessage="#{bundle.EditTaxaRequiredMessage_taxa}"/>
+                    <h:outputLabel value="#{bundle.EditTaxaLabel_ano}" for="ano" />
+                    <h:inputText id="ano" value="#{taxaController.selected.ano}" title="#{bundle.EditTaxaTitle_ano}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTaxaLabel_mes}" for="mes" />
+                    <h:inputText id="mes" value="#{taxaController.selected.mes}" title="#{bundle.EditTaxaTitle_mes}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTaxaLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{taxaController.selected.valor}" title="#{bundle.EditTaxaTitle_valor}" />
+                </h:panelGrid>
+                <h:commandLink action="#{taxaController.update}" value="#{bundle.EditTaxaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTaxaViewLink}"/>
+                <br />
+                <h:commandLink action="#{taxaController.prepareList}" value="#{bundle.EditTaxaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTaxaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

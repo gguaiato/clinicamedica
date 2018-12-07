@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDoençaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDoençaLabel_idDoenca}" for="idDoenca" />
+                    <h:inputText id="idDoenca" value="#{doençaController.selected.idDoenca}" title="#{bundle.EditDoençaTitle_idDoenca}" required="true" requiredMessage="#{bundle.EditDoençaRequiredMessage_idDoenca}"/>
+                    <h:outputLabel value="#{bundle.EditDoençaLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{doençaController.selected.nome}" title="#{bundle.EditDoençaTitle_nome}" />
+                </h:panelGrid>
+                <h:commandLink action="#{doençaController.update}" value="#{bundle.EditDoençaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDoençaViewLink}"/>
+                <br />
+                <h:commandLink action="#{doençaController.prepareList}" value="#{bundle.EditDoençaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDoençaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

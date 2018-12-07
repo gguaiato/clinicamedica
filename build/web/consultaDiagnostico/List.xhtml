@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListConsultaDiagnosticoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListConsultaDiagnosticoEmpty}" rendered="#{consultaDiagnosticoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{consultaDiagnosticoController.items.rowCount > 0}">
+                    <h:outputText value="#{consultaDiagnosticoController.pagination.pageFirstItem + 1}..#{consultaDiagnosticoController.pagination.pageLastItem + 1}/#{consultaDiagnosticoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{consultaDiagnosticoController.previous}" value="#{bundle.Previous} #{consultaDiagnosticoController.pagination.pageSize}" rendered="#{consultaDiagnosticoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{consultaDiagnosticoController.next}" value="#{bundle.Next} #{consultaDiagnosticoController.pagination.pageSize}" rendered="#{consultaDiagnosticoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{consultaDiagnosticoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaDiagnosticoTitle_consultaDiagnosticoPK_idConsulta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.consultaDiagnosticoPK.idConsulta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaDiagnosticoTitle_data}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.data}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaDiagnosticoTitle_pagou}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pagou}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaDiagnosticoTitle_valorPago}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorPago}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaDiagnosticoTitle_formaPagamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.formaPagamento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaDiagnosticoTitle_horaInicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horaInicio}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaDiagnosticoTitle_minutosInic}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.minutosInic}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaDiagnosticoTitle_horaFim}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horaFim}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaDiagnosticoTitle_tratamentoRecomendado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tratamentoRecomendado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaDiagnosticoTitle_remediosReceitados}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.remediosReceitados}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaDiagnosticoTitle_observacoes}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacoes}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConsultaDiagnosticoTitle_doença}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.doença}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{consultaDiagnosticoController.prepareView}" value="#{bundle.ListConsultaDiagnosticoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{consultaDiagnosticoController.prepareEdit}" value="#{bundle.ListConsultaDiagnosticoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{consultaDiagnosticoController.destroy}" value="#{bundle.ListConsultaDiagnosticoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{consultaDiagnosticoController.prepareCreate}" value="#{bundle.ListConsultaDiagnosticoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListConsultaDiagnosticoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMedicoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditMedicoLabel_crm}" for="crm" />
+                    <h:inputText id="crm" value="#{medicoController.selected.crm}" title="#{bundle.EditMedicoTitle_crm}" required="true" requiredMessage="#{bundle.EditMedicoRequiredMessage_crm}"/>
+                    <h:outputLabel value="#{bundle.EditMedicoLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{medicoController.selected.nome}" title="#{bundle.EditMedicoTitle_nome}" />
+                    <h:outputLabel value="#{bundle.EditMedicoLabel_telefone}" for="telefone" />
+                    <h:inputText id="telefone" value="#{medicoController.selected.telefone}" title="#{bundle.EditMedicoTitle_telefone}" />
+                    <h:outputLabel value="#{bundle.EditMedicoLabel_fkAgendaidAgenda}" for="fkAgendaidAgenda" />
+                    <h:selectOneMenu id="fkAgendaidAgenda" value="#{medicoController.selected.fkAgendaidAgenda}" title="#{bundle.EditMedicoTitle_fkAgendaidAgenda}" >
+                        <f:selectItems value="#{agendaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditMedicoLabel_consultaDiagnostico}" for="consultaDiagnostico" />
+                    <h:selectOneMenu id="consultaDiagnostico" value="#{medicoController.selected.consultaDiagnostico}" title="#{bundle.EditMedicoTitle_consultaDiagnostico}" >
+                        <f:selectItems value="#{consultaDiagnosticoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{medicoController.update}" value="#{bundle.EditMedicoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditMedicoViewLink}"/>
+                <br />
+                <h:commandLink action="#{medicoController.prepareList}" value="#{bundle.EditMedicoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditMedicoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
